@@ -49,6 +49,11 @@ class VarnishMetrics < Sensu::Plugin::Metric::CLI::Graphite
          short: '-n VARNISH_NAME',
          long: '--name VARNISH_NAME'
 
+  option :fields,
+         description: 'The stats fields to get from varnish, comma sepparated. See varnishstat -f',
+         short: '-f fieldlist',
+         long: '--fields fieldlist'
+
   def graphite_path_sanitize(path)
     # accept only a small set of chars in a graphite path and convert anything else
     # to underscores
@@ -57,18 +62,31 @@ class VarnishMetrics < Sensu::Plugin::Metric::CLI::Graphite
 
   def run
     begin
+      fieldargs = ''
+      if config[:fields]
+        if config[:fields].include? ','
+          config[:fields].split(',').each | field |
+            fieldargs << " -f '#{field}'"
+        else
+          fieldargs << " -f '#{config[:fields]}'"
+        end
+      end
+      puts "fields: #{fieldargs}"
+
       if config[:varnish_name]
-        varnishstat = `varnishstat -x -n #{config[:varnish_name]}`
+        varnishstat = `varnishstat -x -n #{config[:varnish_name]} #{fieldargs}`
       else
-        varnishstat = `varnishstat -x`
+        varnishstat = `varnishstat -x #{fieldargs}`
       end
       stats = Crack::XML.parse(varnishstat)
-      stats['varnishstat']['stat'].each do |stat|
-        path = "#{config[:scheme]}"
-        path += '.' + graphite_path_sanitize(stat['type'])    if stat['type']
-        path += '.' + graphite_path_sanitize(stat['ident'])   if stat['ident']
-        path += '.' + graphite_path_sanitize(stat['name'])
-        output path, stat['value']
+      if stats['varnishstat']['stat']
+        stats['varnishstat']['stat'].each do |stat|
+          path = "#{config[:scheme]}"
+          path += '.' + graphite_path_sanitize(stat['type'])    if stat['type']
+          path += '.' + graphite_path_sanitize(stat['ident'])   if stat['ident']
+          path += '.' + graphite_path_sanitize(stat['name'])
+          output path, stat['value']
+        end
       end
     rescue => e
       puts "Error: exception: #{e}"
