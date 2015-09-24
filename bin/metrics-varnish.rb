@@ -65,7 +65,7 @@ class VarnishMetrics < Sensu::Plugin::Metric::CLI::Graphite
       fieldargs = ''
       if config[:fields]
         if config[:fields].include? ','
-          config[:fields].split(',').each do | field |
+          config[:fields].split(',').each do |field|
             fieldargs << " -f '#{field}'"
           end
         else
