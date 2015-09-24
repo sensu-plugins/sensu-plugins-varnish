@@ -3,7 +3,7 @@
 #   varnish-metrics
 #
 # DESCRIPTION:
-#   This was tested with varnishstat from Varnish 3.x, but should work fine
+#   This was tested with varnishstat from Varnish 3.x and 4.x, but should work fine
 #   with 2.x as well, and probably any version that supports '-x' for xml output.
 #
 # OUTPUT:
@@ -65,13 +65,13 @@ class VarnishMetrics < Sensu::Plugin::Metric::CLI::Graphite
       fieldargs = ''
       if config[:fields]
         if config[:fields].include? ','
-          config[:fields].split(',').each | field |
+          config[:fields].split(',').each do |field|
             fieldargs << " -f '#{field}'"
+          end
         else
           fieldargs << " -f '#{config[:fields]}'"
         end
       end
-      puts "fields: #{fieldargs}"
 
       if config[:varnish_name]
         varnishstat = `varnishstat -x -n #{config[:varnish_name]} #{fieldargs}`
