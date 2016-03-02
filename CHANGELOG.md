@@ -3,7 +3,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 This CHANGELOG follows the format listed at [Keep A Changelog](http://keepachangelog.com/)
 
-## Unreleased
+## 
 ### Changed
 - Removed puts debug code.
 - Fixed fieldsargs loop. It didn't work.
@@ -27,7 +27,7 @@ This CHANGELOG follows the format listed at [Keep A Changelog](http://keepachang
 ### Added
 - initial release
 
-[unreleased]: https://github.com/sensu-plugins/sensu-plugins-varnish/compare/0.0.4...HEAD
+: https://github.com/sensu-plugins/sensu-plugins-varnish/compare/0.0.4...HEAD
 [0.0.5]: https://github.com/sensu-plugins/sensu-plugins-varnish/compare/0.0.4...0.0.5
 [0.0.4]: https://github.com/sensu-plugins/sensu-plugins-varnish/compare/0.0.3...0.0.4
 [0.0.3]: https://github.com/sensu-plugins/sensu-plugins-varnish/compare/0.0.2...0.0.3
