@@ -77,7 +77,7 @@ class VarnishMetrics < Sensu::Plugin::Metric::CLI::Graphite
                       `varnishstat -x -n #{config[:varnish_name]} #{fieldargs}`
                     else
                       `varnishstat -x #{fieldargs}`
-      end
+                    end
       stats = Crack::XML.parse(varnishstat)
       if stats['varnishstat']['stat']
         stats['varnishstat']['stat'].each do |stat|
