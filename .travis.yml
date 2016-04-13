@@ -24,7 +24,7 @@ deploy:
     secure: noQ7LLL02BTpreA3Eauq3BUDWJ8Kc9S8z3NOW8Kyt81tlMeaawCdKHbhxH5I9RsM/ydRfcT6vs4jBCw8js1yrk/N/pSgKdHvnu0oRVJkxB/h/K5Tn78ZbeFGbCsaYUFs7DmPdWYkFwkkmuYjJQf3TnbLhY24vcnAR2/FHYnwpcE=
   gem: sensu-plugins-varnish
   on:
-    ags: true
+    tags: true
     all_branches: true
     rvm: 1.9.3
     rvm: 2.0
