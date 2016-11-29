@@ -87,7 +87,7 @@ class CheckVarnishStatus < Sensu::Plugin::Check::CLI
     end
 
     if config[:command] == 'debug.health'
-      if command.include? 'sick' || command.include? 'Sick'
+      if command.downcase.include? 'sick'
         critical 'Sick backends detected'
       else
         ok 'All backends healthy'
