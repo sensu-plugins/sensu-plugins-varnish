@@ -16,7 +16,7 @@
 #   requires sensu user to be able to sudo varnishadm without password
 #
 # USAGE:
-#   check-varnish-status -S secretfile -p port -h hostname 
+#   check-varnish-status -S secretfile -p port -h hostname
 #
 # NOTES:
 #   N/A
@@ -87,7 +87,7 @@ class CheckVarnishStatus < Sensu::Plugin::Check::CLI
     end
 
     if config[:command] == 'debug.health'
-      if command.include? 'sick' or command.include? 'Sick'
+      if command.include? 'sick' || command.include? 'Sick'
         critical 'Sick backends detected'
       else
         ok 'All backends healthy'
