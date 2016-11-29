@@ -10,6 +10,7 @@
 
 ## Files
  * bin/metrics-varnish.rb
+ * bin/check-varnish-status.rb
 
 ## Usage
 
