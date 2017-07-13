@@ -4,6 +4,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 This CHANGELOG follows the format listed at [Keep A Changelog](http://keepachangelog.com/)
 
 ## [Unreleased]
+### Removed
+- Removed legacy Rake code that prevented rubocop running during Ruby 1.9.3 tests
 
 ## [1.0.0] - 2017-07-02
 ### Breaking Changes
