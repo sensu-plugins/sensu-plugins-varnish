@@ -38,6 +38,13 @@ require 'uri'
 require 'crack'
 
 class VarnishMetrics < Sensu::Plugin::Metric::CLI::Graphite
+  option :sudo,
+         short:            '-S',
+         long:             '--sudo',
+         description:      'run varnishstat as sudo (and possibly avoid running sensu as root)',
+         boolean:          true,
+         default:          false
+
   option :scheme,
          description: 'Metric naming scheme, text to prepend to metric',
          short: '-s SCHEME',
@@ -73,10 +80,12 @@ class VarnishMetrics < Sensu::Plugin::Metric::CLI::Graphite
         end
       end
 
+      base_command = "varnishstat -x"
+      base_command = "sudo #{base_command}" if config[:sudo]
       varnishstat = if config[:varnish_name]
-                      `varnishstat -x -n #{config[:varnish_name]} #{fieldargs}`
+                      `#{base_command} -n #{config[:varnish_name]} #{fieldargs}`
                     else
-                      `varnishstat -x #{fieldargs}`
+                      `#{base_command} #{fieldargs}`
                     end
       stats = Crack::XML.parse(varnishstat)
       if stats['varnishstat']['stat']
