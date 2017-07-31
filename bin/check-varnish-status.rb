@@ -77,7 +77,7 @@ class CheckVarnishStatus < Sensu::Plugin::Check::CLI
   # Main Function
   def run
     # Keep a full reference for the varnish binary so sudo uses a full path
-    varnishadm=`which varnishadm 2>/dev/null`.to_s
+    varnishadm = `which varnishadm 2>/dev/null`.to_s
     unknown 'varnishadm is not installed!' unless varnishadm.include? 'varnish'
     command = `sudo #{varnishadm} -T #{config[:host]}:#{config[:port]} -S #{config[:secret]} -t #{config[:timeout]} #{config[:command]}`
     if config[:command] == 'status'
