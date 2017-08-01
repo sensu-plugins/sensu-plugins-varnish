@@ -1,15 +1,16 @@
-#Change Log
+# Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 This CHANGELOG follows the format listed at [Keep A Changelog](http://keepachangelog.com/)
 
 ## [Unreleased]
 
+## [1.1.0] - 2017-08-01
 ### Changed
-- Use full path for varnish scripts to allow sudoers files with explicit binaries to work
+- Use full path for varnish scripts to allow sudoers files with explicit binaries to work (@warmfusion)
 
 ### Removed
-- Removed legacy Rake code that prevented rubocop running during Ruby 1.9.3 tests
+- Removed legacy Rake code that prevented rubocop running during Ruby 1.9.3 tests (@thomasriley)
 
 ## [1.0.0] - 2017-07-02
 ### Breaking Changes
@@ -47,7 +48,8 @@ This CHANGELOG follows the format listed at [Keep A Changelog](http://keepachang
 ### Added
 - initial release
 
-[Unreleased]: https://github.com/sensu-plugins/sensu-plugins-varnish/compare/1.0.0...HEAD
+[Unreleased]: https://github.com/sensu-plugins/sensu-plugins-varnish/compare/1.1.0...HEAD
+[1.1.0]: https://github.com/sensu-plugins/sensu-plugins-varnish/compare/1.0.0...1.1.0
 [1.0.0]: https://github.com/sensu-plugins/sensu-plugins-varnish/compare/0.1.0...1.0.0
 [0.1.0]: https://github.com/sensu-plugins/sensu-plugins-varnish/compare/0.0.5...0.1.0
 [0.0.5]: https://github.com/sensu-plugins/sensu-plugins-varnish/compare/0.0.4...0.0.5
