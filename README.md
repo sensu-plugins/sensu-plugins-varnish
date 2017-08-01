@@ -14,6 +14,16 @@
 
 ## Usage
 
+These checks need to sudo certain varnish scripts to be able to get status and metrics data.
+To ensure sensu can run these commands, add the following to `/etc/sudoers.d/sensu-varnish` or wherever you
+manage your sudo lists;
+
+```
+# Assuming that your varnish scripts are located in /usr/bin;
+sensu ALL=(ALL) NOPASSWD: /usr/bin/varnishadm /usr/bin/varnishstat
+```
+
+
 ## Installation
 
 [Installation and Setup](http://sensu-plugins.io/docs/installation_instructions.html)

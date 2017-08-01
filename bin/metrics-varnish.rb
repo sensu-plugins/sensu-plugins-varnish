@@ -61,6 +61,10 @@ class VarnishMetrics < Sensu::Plugin::Metric::CLI::Graphite
   end
 
   def run
+    # Keep a full reference for the varnish binary so sudo uses a full path
+    varnishstat_command = `which varnishstat 2>/dev/null`.to_s
+    unknown 'varnishstat is not installed!' unless varnishstat_command.include? 'varnish'
+
     begin
       fieldargs = ''
       if config[:fields]
@@ -74,10 +78,11 @@ class VarnishMetrics < Sensu::Plugin::Metric::CLI::Graphite
       end
 
       varnishstat = if config[:varnish_name]
-                      `varnishstat -x -n #{config[:varnish_name]} #{fieldargs}`
+                      `sudo #{varnishstat_command} -x -n #{config[:varnish_name]} #{fieldargs}`
                     else
-                      `varnishstat -x #{fieldargs}`
+                      `sudo #{varnishstat_command} -x #{fieldargs}`
                     end
+
       stats = Crack::XML.parse(varnishstat)
       if stats['varnishstat']['stat']
         stats['varnishstat']['stat'].each do |stat|

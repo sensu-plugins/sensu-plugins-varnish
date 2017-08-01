@@ -4,6 +4,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 This CHANGELOG follows the format listed at [Keep A Changelog](http://keepachangelog.com/)
 
 ## [Unreleased]
+
+### Changed
+- Use full path for varnish scripts to allow sudoers files with explicit binaries to work
+
 ### Removed
 - Removed legacy Rake code that prevented rubocop running during Ruby 1.9.3 tests
 
