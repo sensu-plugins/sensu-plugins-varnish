@@ -5,6 +5,9 @@ This CHANGELOG follows the format listed at [Keep A Changelog](http://keepachang
 
 ## [Unreleased]
 
+### Fixed
+ - `which` may return multiple options, and always ends with a newline - Split and take the first option
+
 ## [1.1.0] - 2017-08-01
 ### Changed
 - Use full path for varnish scripts to allow sudoers files with explicit binaries to work (@warmfusion)
