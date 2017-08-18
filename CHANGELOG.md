@@ -5,6 +5,10 @@ This CHANGELOG follows the format listed at [Keep A Changelog](http://keepachang
 
 ## [Unreleased]
 
+### Fixed
+ - `which` returns a newline terminated string in all cases - strip it before trying to run the command otherwise
+   the generated command will be split over two lines and fail
+   
 ## [1.1.0] - 2017-08-01
 ### Changed
 - Use full path for varnish scripts to allow sudoers files with explicit binaries to work (@warmfusion)

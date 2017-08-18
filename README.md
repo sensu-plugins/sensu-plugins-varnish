@@ -20,7 +20,7 @@ manage your sudo lists;
 
 ```
 # Assuming that your varnish scripts are located in /usr/bin;
-sensu ALL=(ALL) NOPASSWD: /usr/bin/varnishadm /usr/bin/varnishstat
+sensu ALL=(ALL) NOPASSWD: /usr/bin/varnishadm, /usr/bin/varnishstat
 ```
 
 
