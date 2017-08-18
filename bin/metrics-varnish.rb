@@ -62,7 +62,7 @@ class VarnishMetrics < Sensu::Plugin::Metric::CLI::Graphite
 
   def run
     # Keep a full reference for the varnish binary so sudo uses a full path
-    varnishstat_command = `which varnishstat 2>/dev/null`.strip
+    varnishstat_command = `which varnishstat 2>/dev/null`.chomp
     unknown 'varnishstat is not installed!' unless varnishstat_command.include? 'varnish'
 
     begin
