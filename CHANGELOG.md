@@ -5,6 +5,10 @@ This CHANGELOG follows the format listed at [Keep A Changelog](http://keepachang
 
 ## [Unreleased]
 
+## [1.1.2] - 2017-08-29
+### Fixed
+ - updated backend status check to include new Varnish command `backend.list` (@shaun-rutherford)
+
 ## [1.1.1] - 2017-08-18
 ### Fixed
  - `which` returns a newline terminated string in all cases - strip it before trying to run the command otherwise the generated command will be split over two lines and fail (@warmfusion)
