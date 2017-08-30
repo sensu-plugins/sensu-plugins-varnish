@@ -59,7 +59,8 @@ This CHANGELOG follows the format listed at [Keep A Changelog](http://keepachang
 ### Added
 - initial release
 
-[Unreleased]: https://github.com/sensu-plugins/sensu-plugins-varnish/compare/1.1.0...HEAD
+[Unreleased]: https://github.com/sensu-plugins/sensu-plugins-varnish/compare/1.1.1...HEAD
+[1.1.2]: https://github.com/sensu-plugins/sensu-plugins-varnish/compare/1.1.1...1.1.2
 [1.1.1]: https://github.com/sensu-plugins/sensu-plugins-varnish/compare/1.1.0...1.1.1
 [1.1.0]: https://github.com/sensu-plugins/sensu-plugins-varnish/compare/1.0.0...1.1.0
 [1.0.0]: https://github.com/sensu-plugins/sensu-plugins-varnish/compare/0.1.0...1.0.0
